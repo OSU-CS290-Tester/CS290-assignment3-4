@@ -13,7 +13,8 @@
 */
 
 //your code here
-function uselessFunction(){
+function uselessFunction() {
+    "use strict";
     return null;
 }
 //end your code
@@ -32,7 +33,18 @@ var barType = typeof bar;
 */
 
 //your code here
+bar = function(doubleArray) {
+    "use strict";
+    var i;
+    for (i = 0; i < doubleArray.length; i += 1){
+        if (isNaN(doubleArray[i])) {
+            return false;
+        }
+        doubleArray[i] *= 2;
 
+    }
+    return true;
+}
 //end your code
 
 /**
