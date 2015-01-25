@@ -82,13 +82,13 @@ function GitLog(hash, date, message) {
 //your code here
 function parseGit(logArray) {
     "use strict";
-    var gitLogArray = [], str, hash, date = new Date, msg, i;
+    var gitLogArray = [], str, hash, date, msg, i;
     for (i = 0; i < logArray.length; i += 1) {
         str = logArray[i].split(" \""); //split the hash and date from the message
-        msg = str[1].substr(0, str[1].indexOf('"'));; //copy message up to and including first quote
+        msg = str[1].substr(0, str[1].indexOf('"')); //copy message up to and including first quote
         hash = str[0].substr(0, str[0].indexOf(' ')); //copy hash (everything up to first space)
         date = new Date(str[0].substr(str[0].indexOf(' ') + 1)); //copy date (everything after frist space)
-        console.log(hash, date.toString(), msg); //debug
+        //console.log(hash, date.toString(), msg); //debug
         gitLogArray.push(new GitLog(hash, date, msg));
     }
     return gitLogArray;
