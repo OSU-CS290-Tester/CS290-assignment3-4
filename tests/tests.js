@@ -12,7 +12,7 @@ test("variableModification tests", function( assert ){
 	assert.equal(typeof out[1], 'string', 'asString is a string.');
 	assert.equal(out[1], '6', 'asString is the right string.');
 	assert.equal(typeof out[2], 'string', 'asStringFoo is a string.');
-	assert.equal(out[2], 'Your Number is 6', 'asStringFoo is appended with \'foo\'.');
+	assert.equal(out[2], 'Your Number is 6', 'Approprate string is returned.');
 	assert.strictEqual(out[3], 6, 'a was not modified.');
 });
 
@@ -27,10 +27,10 @@ test("isString tests", function( assert ){
 test("isNull tests", function( assert ){
 	assert.expect( 5 );
 	assert.ok(isNull(null),'Identifies null.');
-	assert.ok(!isUndefined(42),'Rejects a number.');
-	assert.ok(!isUndefined(undefined),'Rejects undefined.');
-	assert.ok(!isUndefined(NaN),'Rejects NaN.');
-	assert.ok(!isUndefined(new String('foo')),'Rejects string object.');
+	assert.ok(!isNull(42),'Rejects a number.');
+	assert.ok(!isNull(undefined),'Rejects undefined.');
+	assert.ok(!isNull(NaN),'Rejects NaN.');
+	assert.ok(!isNull(new String('foo')),'Rejects string object.');
 });
 
 /*
@@ -112,7 +112,7 @@ test("MessageLog constructor tests", function(assert){
 test("MessageLog instance tests", function(assert){
 	assert.expect( 7 );
 	this.testLog.logMessage('I 0', 1);
-	assert.equal(this.testLog.lastReceivedMessage(),'I 1','Records 1 received message.');
+	assert.equal(this.testLog.lastReceivedMessage(),'I 0','Records 1 received message.');
 	assert.equal(this.testLog.totalReceived(),1,'Count reflects 1 received message.');
 	this.testLog.logMessage('I 1', 1);
 	this.testLog.logMessage('I 2', 1);
