@@ -39,6 +39,8 @@ function returnObjectLiteral() {
 */
 
 //your code here
+var globalSystemRecd = 0;
+
 function logMessage(messageText, direction) {
     "use strict";
     if (direction === 0) {
@@ -50,6 +52,7 @@ function logMessage(messageText, direction) {
     } else if (direction === 1) {
         this.recdMessages.unshift(messageText);
         this.totalnumRecd += 1;
+        globalSystemRecd += 1;
         if (this.recdMessages.length > 5) {
             this.recdMessages.pop();
         }
@@ -95,9 +98,10 @@ function MessageLog(user) {
     this.totalSent = totalSent;
     this.totalReceived = totalReceived;
 }
-/*
+
+
 //debug
-var newobj = new MessageLog("Eric");
+/*var newobj = new MessageLog("Eric");
 newobj.logMessage("rectest1", 1);
 newobj.logMessage("rectest2", 1);
 newobj.logMessage("rectest3", 1);
@@ -110,8 +114,8 @@ newobj.logMessage("sndtest3", 0);
 newobj.logMessage("sndtest4", 0);
 newobj.logMessage("sndtest5", 0);
 newobj.logMessage("sndtest6", 0);
-console.log(newobj.getSentMessage(0), newobj.totalnumRecd, newobj.getRecdMessage(0));
-*/
+console.log(newobj.getSentMessage(0), newobj.totalnumRecd, newobj.getRecdMessage(0));*/
+
 //end your code
 
 /**
@@ -124,6 +128,13 @@ MessageLog.prototype.lastReceivedMessage = function () {
     "use strict";
     return this.getRecdMessage(0);
 }
+
+MessageLog.prototype.systemReceived = function () {
+    "use strict";
+    return globalSystemRecd;
+}
+
+//console.log(newobj.getSentMessage(0), newobj.totalnumRecd, newobj.getRecdMessage(0), newobj.systemReceived(), newobj.lastReceivedMessage());
 //end your code
 
 /**
