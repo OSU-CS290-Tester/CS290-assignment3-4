@@ -10,7 +10,8 @@
 
 function returnObjectLiteral() {
   //your code here
-  return {type: 'Goldfish', brand: 'Pepperidge Farm', flavor: 'Cheddar', count: 2000}; //Modify ONLY this line
+    "use strict";
+    return {type: 'Goldfish', brand: 'Pepperidge Farm', flavor: 'Cheddar', count: 2000}; //Modify ONLY this line
   //end your code
 }
 
@@ -38,10 +39,54 @@ function returnObjectLiteral() {
 */
 
 //your code here
-function MessageLog(user){
+function logMessage(messageText, direction) {
+    "use strict";
+    if (direction === 0) {
+        this.sentMessages.unshift(messageText);
+        this.totalnumSent += 1;
+        if (this.sentMessages.length > 5) {
+            this.sentMessages.pop();
+        }
+    } else if (direction === 1) {
+        this.recdMessages.unshift(messageText);
+        this.totalnumRecd += 1;
+        if (this.recdMessages.length > 5) {
+            this.recdMessages.pop();
+        }
+    }
+}
+
+function getSentMessage(n) {
+    "use strict";
+    if (n > 4) {
+        return null;
+    }
+    return this.sentMessages[n];
+}
+
+function getRecdMessage(n) {
+    "use strict";
+    if (n > 4) {
+        return null;
+    }
+    return this.recdMessages[n];
+}
+
+function totalSent() {
+    "use strict";
+    return this.totalnumSent;
+}
+
+function totalReceived() {
+    "use strict";
+    return this.totalnumRecd;
+}
+
+function MessageLog(user) {
+    "use strict";
     this.user = user;
-    this.sentMessages = new Array();
-    this.recdMessages = new Array();
+    this.sentMessages = [];
+    this.recdMessages = [];
     this.logMessage = logMessage;
     this.getSentMessage = getSentMessage;
     this.getRecdMessage = getRecdMessage;
@@ -50,45 +95,6 @@ function MessageLog(user){
     this.totalSent = totalSent;
     this.totalReceived = totalReceived;
 }
-
-function logMessage (messageText, direction){
-    if (direction == 0) {
-        this.sentMessages.unshift(messageText);
-        this.totalnumSent += 1;
-        if (this.sentMessages.length > 5){
-            this.sentMessages.pop();
-        }
-    } else if (direction == 1) {
-        this.recdMessages.unshift(messageText);
-        this.totalnumRecd += 1;
-        if (this.recdMessages.length > 5){
-            this.recdMessages.pop();
-        }
-    }
-}
-
-function getSentMessage (n){
-    if (n > 4){
-        return null;
-    }
-    return this.sentMessages[n];
-}
-
-function getRecdMessage (n){
-    if (n > 4){
-        return null;
-    }
-    return this.recdMessages[n];
-}
-
-function totalSent(){
-    return this.totalnumSent;
-}
-
-function totalReceived (){
-    return this.totalnumRecd;
-}
-
 /*
 //debug
 var newobj = new MessageLog("Eric");
@@ -114,7 +120,8 @@ console.log(newobj.getSentMessage(0), newobj.totalnumRecd, newobj.getRecdMessage
 * received.
 */
 //your code here
-MessageLog.prototype.lastReceivedMessage = function(){
+MessageLog.prototype.lastReceivedMessage = function () {
+    "use strict";
     return this.getRecdMessage(0);
 }
 //end your code
