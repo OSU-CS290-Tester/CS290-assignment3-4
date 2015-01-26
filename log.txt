@@ -1,1 +1,46 @@
-You log goes in this  file.
+Log is in reverse chronological order
+(most recent entry is first)
+
+Start: Sun, 25 Jan 2015 16:58:13 -0800
+End: Sun, 25 Jan 2015 17:00:41 -0800
+Tasks: variables.js passes jslint
+
+Start: Sun, 25 Jan 2015 16:53:32 -0800
+End: Sun, 25 Jan 2015 16:58:13 -0800
+Tasks: add isString to variables.js
+
+Start: Sun, 25 Jan 2015 16:52:30 -0800
+End: Sun, 25 Jan 2015 16:53:32 -0800
+Tasks: add isNull code to variables.js
+
+Start: Sun, 25 Jan 2015 16:40:34 -0800
+End: Sun, 25 Jan 2015 16:52:30 -0800
+Tasks: working on variables.js now, finished variableModification
+
+Start: Sun, 25 Jan 2015 15:39:27 -0800
+End: Sun, 25 Jan 2015 16:40:34 -0800
+Tasks: finish objects; not jslint compliant but passes all tests
+
+Start: Sun, 25 Jan 2015 14:08:42 -0800
+End: Sun, 25 Jan 2015 14:13:29 -0800
+Tasks: add code to return object literal in objects.js
+
+Start: Sun, 25 Jan 2015 13:31:46 -0800
+End: Sun, 25 Jan 2015 14:08:42 -0800
+Tasks: add parseGit function and pass all tests 
+
+Start: Sun, 25 Jan 2015 13:04:13 -0800
+End: Sun, 25 Jan 2015 13:31:46 -0800
+Tasks: add bar function to functions.js and fix code to jslint standard
+
+Start: Sun, 25 Jan 2015 12:59:31 -0800
+End: Sun, 25 Jan 2015 13:04:13 -0800
+Tasks: add useless function to functions.js again
+
+Start: Mon, 19 Jan 2015 17:43:25 -0800
+End: Sun, 25 Jan 2015 12:59:31 -0800
+Tasks: re-copied source material to get updated info
+
+Start: Mon, 19 Jan 2015 17:16:45 -0800
+End: Mon, 19 Jan 2015 17:43:25 -0800
+Tasks: added useless function to functions.js
