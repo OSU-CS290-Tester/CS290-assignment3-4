@@ -10,6 +10,7 @@ in input `a`
 a: the original a number
 */
 function variableModification(a) {
+  "use strict";
   var plus5;
   var asString;
   var yourNumberIs;
@@ -30,6 +31,7 @@ return true if b is a primitive string value (also known as a string literal),
 false otherwise
 */
 function isString(b) {
+  "use strict";
   //your code here
   if (typeof b === "string"){
     return true;
@@ -46,6 +48,7 @@ Output:
 return true if c is null, false otherwise
 */
 function isNull(c) {
+  "use strict";
   //your code here
   if (c === null){
     return true;
