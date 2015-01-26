@@ -40,13 +40,72 @@ function returnObjectLiteral() {
 //your code here
 function MessageLog(user){
     this.user = user;
-    this.sentMessages = [];
-    this.recdMessages = [];
-    logMessage : function (messageText, direction){
-
-    }
-
+    this.sentMessages = new Array();
+    this.recdMessages = new Array();
+    this.logMessage = logMessage;
+    this.getSentMessage = getSentMessage;
+    this.getRecdMessage = getRecdMessage;
+    this.totalnumSent = 0;
+    this.totalnumRecd = 0;
+    this.totalSent = totalSent;
+    this.totalReceived = totalReceived;
 }
+
+function logMessage (messageText, direction){
+    if (direction == 0) {
+        this.sentMessages.unshift(messageText);
+        this.totalnumSent += 1;
+        if (this.sentMessages.length > 5){
+            this.sentMessages.pop();
+        }
+    } else if (direction == 1) {
+        this.recdMessages.unshift(messageText);
+        this.totalnumRecd += 1;
+        if (this.recdMessages.length > 5){
+            this.recdMessages.pop();
+        }
+    }
+}
+
+function getSentMessage (n){
+    if (n > 4){
+        return null;
+    }
+    return this.sentMessages[n];
+}
+
+function getRecdMessage (n){
+    if (n > 4){
+        return null;
+    }
+    return this.recdMessages[n];
+}
+
+function totalSent(){
+    return this.totalnumSent;
+}
+
+function totalReceived (){
+    return this.totalnumRecd;
+}
+
+/*
+//debug
+var newobj = new MessageLog("Eric");
+newobj.logMessage("rectest1", 1);
+newobj.logMessage("rectest2", 1);
+newobj.logMessage("rectest3", 1);
+newobj.logMessage("rectest4", 1);
+newobj.logMessage("rectest5", 1);
+newobj.logMessage("rectest6", 1);
+newobj.logMessage("sndtest1", 0);
+newobj.logMessage("sndtest2", 0);
+newobj.logMessage("sndtest3", 0);
+newobj.logMessage("sndtest4", 0);
+newobj.logMessage("sndtest5", 0);
+newobj.logMessage("sndtest6", 0);
+console.log(newobj.getSentMessage(0), newobj.totalnumRecd, newobj.getRecdMessage(0));
+*/
 //end your code
 
 /**
@@ -55,7 +114,9 @@ function MessageLog(user){
 * received.
 */
 //your code here
-
+MessageLog.prototype.lastReceivedMessage = function(){
+    return this.getRecdMessage(0);
+}
 //end your code
 
 /**
@@ -65,5 +126,8 @@ function MessageLog(user){
 */
 
 //your code here
-
+var myLog = new MessageLog("BlackHatGuy");
+myLog.logMessage("foo", 1);
+myLog.logMessage("bar", 1);
+myLog.logMessage("baz", 1);
 //end your code
