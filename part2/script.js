@@ -80,7 +80,8 @@ function displayFavorites() {
     var htmlstring = "";
     for (var i = 0; i < storedList.length; i++){
         htmlstring += "favorite " + (i+1) + ". "
-        htmlstring += storedList[i];
+        htmlstring += "<a href=\"" + storedList[i] + "\">";
+        htmlstring += storedList[i] + "</a>";
         htmlstring += "<br>";
     }
     document.getElementById('favorites').innerHTML = htmlstring;
