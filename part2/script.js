@@ -1,26 +1,48 @@
 var httpRequest = new XMLHttpRequest();
 
-function alertContents() {
-    if (httpRequest.readyState === 4) {
-      if (httpRequest.status === 200) {
-        var text = JSON.parse(httpRequest.responseText);
-        saveLocalStorage("<a href=\""+text[0].url+"\"> 1." + text[0].description + "</a>");
-        displayLocalStorage();
-      } else {
-        alert('There was a problem with the request.');
-      }
-    }
-}
+function paginate(pages_requested) {
+    var page = 1;
+    var overall = 0;
 
-function getGistList() {
-    
-    if(!httpRequest){
-        throw 'Unable to create httpRequest';
+    function alertContents() {
+        if (httpRequest.readyState === 4) {
+          if (httpRequest.status === 200) {
+            var text = JSON.parse(httpRequest.responseText);
+            var results = [];
+            var space = "";
+            for (var i = 0; i < text.length; i++){
+                if (i < 10){
+                    space="  ";
+                } else if (i < 100) {
+                    space = " ";
+                } else {
+                    space = "";
+                }
+                results.push("<a href=\"" + text[0].url + "\"> gist" + space + (overall+i) + "-->" + text[i].description + "</a><br>");
+                }
+            } else {
+            alert('There was a problem with the request.');
+            }
+            saveLocalStorage(results);
+            displayLocalStorage('id'+page);
+        }
     }
-    
-    httpRequest.onreadystatechange = alertContents;
-    httpRequest.open('GET', 'https://api.github.com/gists/public', true);
-    httpRequest.send(null);
+
+    function getGistList() {
+        if(!httpRequest){
+            throw 'Unable to create httpRequest';
+        }
+        
+        httpRequest.onreadystatechange = alertContents;
+        httpRequest.open('GET', 'https://api.github.com/gists/public?page='+ page + '&per_page=30', false);
+        httpRequest.send(null);
+    }
+
+    while (page <= pages_requested){
+        getGistList();
+        page += 1;
+        overall += 30;
+    }
 }
 
 window.onload = function() {
@@ -29,13 +51,17 @@ window.onload = function() {
     //getGistList();
 }
 
-function displayLocalStorage() {
-    document.getElementById('id1').textContent = localStorage.getItem('storage1');
-    document.getElementById('id2').innerHTML = localStorage.getItem('storage1');
+function displayLocalStorage(id) {
+    var storedList = JSON.parse(localStorage.getItem('storage1'));
+    var htmlstring = "";
+    for (var i = 0; i < storedList.length; i++){
+        htmlstring += storedList[i];
+    }
+    document.getElementById(id).innerHTML = htmlstring;
 }
 
-function saveLocalStorage(item) {
-    localStorage.setItem('storage1', item);
+function saveLocalStorage(items) {
+    localStorage.setItem('storage1', JSON.stringify(items));
 }
 
 function clearLocalStorage() {
@@ -49,7 +75,7 @@ function searchTheThings(){
     if (isNaN(sc) || (sc > 5) || (sc < 1)) {
         sc = 1;
     }
+    paginate(sc);
     console.log(sc);//debug
-    saveLocalStorage(sc);
-    displayLocalStorage();
+
 }
