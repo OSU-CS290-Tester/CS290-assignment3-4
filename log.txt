@@ -3,6 +3,53 @@ Log is in reverse chronological order
 
 #Begin Part 2
 
+Start: Sun, 1 Feb 2015 22:08:43 -0800
+End: Sun, 1 Feb 2015 22:21:43 -0800
+Tasks: finalize things, fix log, add code to engr website
+
+Start: Sun, 1 Feb 2015 22:07:42 -0800
+End: Sun, 1 Feb 2015 22:08:43 -0800
+Tasks: add part 2 readme
+
+Start: Sun, 1 Feb 2015 21:13:54 -0800
+End: Sun, 1 Feb 2015 22:07:42 -0800
+Tasks: favorites are at ~99%
+
+Start: Sun, 1 Feb 2015 20:45:40 -0800
+End: Sun, 1 Feb 2015 21:13:54 -0800
+Tasks: filtering works, yipee
+
+Start: Sun, 1 Feb 2015 19:48:06 -0800
+End: Sun, 1 Feb 2015 20:45:40 -0800
+Tasks: filtering ~80%
+
+Start: Sun, 1 Feb 2015 17:37:11 -0800
+End: Sun, 1 Feb 2015 19:48:06 -0800
+Tasks: have 5 divs of gists loading, no filtering yet
+
+Start: Sun, 1 Feb 2015 17:01:45 -0800
+End: Sun, 1 Feb 2015 17:37:11 -0800
+Tasks: superbowl is sapping productivity
+
+Start: Sun, 1 Feb 2015 16:49:39 -0800
+End: Sun, 1 Feb 2015 17:01:45 -0800
+Tasks: pulling in url
+
+Start: Sun, 1 Feb 2015 16:28:05 -0800
+End: Sun, 1 Feb 2015 16:49:39 -0800
+Tasks: getting that object error
+
+Start: Sun, 1 Feb 2015 15:13:52 -0800
+End: Sun, 1 Feb 2015 16:28:05 -0800
+Tasks: retreiving gists via api
+
+Start: Sun, 1 Feb 2015 14:45:23 -0800
+End: Sun, 1 Feb 2015 15:13:52 -0800
+Tasks: adding skeletal elements to index and script files
+
+
+#Begin Part 1
+
 Start: Sun, 25 Jan 2015 17:35:41 -0800
 End: Sun, 25 Jan 2015 17:50:34 -0800
 Tasks: add systemReceived method to MessageLog Prototype
