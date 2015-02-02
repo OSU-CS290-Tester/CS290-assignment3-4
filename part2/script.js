@@ -18,10 +18,17 @@ function paginate(pages_requested, filters) {
                 } else {
                     space = " ";
                 }
-                console.log(text[i].language);
-                if ((filters.length > 0) && (filters.indexOf(text[i].files.language)) != -1) {
-                    results.push("<a href=\"" + text[i].html_url + "\"> gist" + space + (overall+i) + "-->" + text[i].description + "</a><br>");
-                } else if (filters.length === 0) {
+
+                if (filters.length > 0) {
+                    var files = Object.keys(text[i].files);
+                    for (var j = 0; j < files.length; j++){
+                        console.log(text[i].files[files[j]].language);
+                        if (filters.indexOf(text[i].files[files[j]].language) != -1){
+                            results.push("<a href=\"" + text[i].html_url + "\"> gist" + space + (overall+i) + "-->" + text[i].description + "</a><br>");
+                        }
+                    }
+                    
+                } else {
                     results.push("<a href=\"" + text[i].html_url + "\"> gist" + space + (overall+i) + "-->" + text[i].description + "</a><br>");
                 }
 
