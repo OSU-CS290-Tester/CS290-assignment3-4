@@ -3,7 +3,8 @@ var httpRequest = new XMLHttpRequest();
 function alertContents() {
     if (httpRequest.readyState === 4) {
       if (httpRequest.status === 200) {
-        saveLocalStorage(JSON.parse(httpRequest.responseText));
+        var text = JSON.parse(httpRequest.responseText);
+        saveLocalStorage(text[0].url);
         displayLocalStorage();
       } else {
         alert('There was a problem with the request.');
