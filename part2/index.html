@@ -5,13 +5,14 @@
   <script src='script.js'></script>
 </head>
 <body>
-  <div id="id1"></div>
-  <div id="id2"></div>
   <form>
     <fieldset>
       <legend>Search</legend>
       <input type='number' name='searchcount'>
       <input type='button' name='search' onclick='searchTheThings()' value='Search Now'>
+      <input type='button' name='search' onclick='clearLocalStorage()' value='Clear Stored Values'>
     </fieldset>
-    </form>
+  </form>
+  <div id="id1"></div>
+  <div id="id2"></div>
 </body>
