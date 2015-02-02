@@ -1,6 +1,6 @@
 var httpRequest = new XMLHttpRequest();
 
-function paginate(pages_requested) {
+function paginate(pages_requested, filters) {
     var page = 1;
     var overall = 0;
 
@@ -11,16 +11,22 @@ function paginate(pages_requested) {
             var results = [];
             var space = "";
             for (var i = 0; i < text.length; i++){
-                if (i < 10){
-                    space="  ";
-                } else if (i < 100) {
-                    space = " ";
+                if (overall+i < 10){
+                    space="   ";
+                } else if (overall+i < 100) {
+                    space = "  ";
                 } else {
-                    space = "";
+                    space = " ";
                 }
-                results.push("<a href=\"" + text[0].url + "\"> gist" + space + (overall+i) + "-->" + text[i].description + "</a><br>");
+                console.log(text[i].language);
+                if ((filters.length > 0) && (filters.indexOf(text[i].files.language)) != -1) {
+                    results.push("<a href=\"" + text[i].html_url + "\"> gist" + space + (overall+i) + "-->" + text[i].description + "</a><br>");
+                } else if (filters.length === 0) {
+                    results.push("<a href=\"" + text[i].html_url + "\"> gist" + space + (overall+i) + "-->" + text[i].description + "</a><br>");
                 }
-            } else {
+
+            }
+        } else {
             alert('There was a problem with the request.');
             }
             saveLocalStorage(results);
@@ -46,8 +52,7 @@ function paginate(pages_requested) {
 }
 
 window.onload = function() {
-    document.getElementById('id1').innerHTML = "Optional, enter number of pages of results and pick filters";
-    document.getElementById('id2').innerHTML = "Click Search!";
+    document.getElementById('id1').innerHTML = "Optional, enter desired number of pages of results.<br>Optional, pick filters.<br>Or, just click search!";
     //getGistList();
 }
 
@@ -71,11 +76,18 @@ function clearLocalStorage() {
 function searchTheThings(){
     //grab the number of pages they want
     var sc = parseInt(document.getElementsByName('searchcount')[0].value, 10);
+    var cb = document.getElementsByName('filter');
+    var filters = []
+    for (var i = 0; i < cb.length; i++){
+        if (cb[i].checked){
+            filters.push(cb[i].id)
+        }
+    }
     //throw away anything that isn't a number from 1 to 5
     if (isNaN(sc) || (sc > 5) || (sc < 1)) {
         sc = 1;
     }
-    paginate(sc);
-    console.log(sc);//debug
+    paginate(sc, filters);
+    console.log(cb, filters);//debug
 
 }

@@ -9,9 +9,13 @@
     <fieldset>
       <legend>Search</legend>
       <input type='number' name='searchcount'>
+      <input type='checkbox' name = 'filter' id='python'>Python
+      <input type='checkbox' name = 'filter' id="json">JSON
+      <input type='checkbox' name = 'filter' id="javascript">JavaScript
+      <input type='checkbox' name = 'filter' id="sql">SQL
+      <br>
       <input type='button' name='search' onclick='searchTheThings()' value='Search Now'>
       <input type='button' name='search' onclick='clearLocalStorage()' value='Clear Stored Values'>
-      <input type='button' name='search' onclick='getGistList()' value='GitList'>
     </fieldset>
   </form>
   <div id="id1"></div>
