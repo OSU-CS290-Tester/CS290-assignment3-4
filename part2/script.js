@@ -4,7 +4,7 @@ function alertContents() {
     if (httpRequest.readyState === 4) {
       if (httpRequest.status === 200) {
         var text = JSON.parse(httpRequest.responseText);
-        saveLocalStorage(text[0].url);
+        saveLocalStorage("<a href=\""+text[0].url+"\"> 1." + text[0].description + "</a>");
         displayLocalStorage();
       } else {
         alert('There was a problem with the request.');
@@ -24,14 +24,14 @@ function getGistList() {
 }
 
 window.onload = function() {
-    document.getElementById('id1').textContent = "id1 text";
-    document.getElementById('id2').innerHTML = "id2 <em>html</em>";
+    document.getElementById('id1').innerHTML = "Optional, enter number of pages of results and pick filters";
+    document.getElementById('id2').innerHTML = "Click Search!";
     //getGistList();
 }
 
 function displayLocalStorage() {
     document.getElementById('id1').textContent = localStorage.getItem('storage1');
-    document.getElementById('id2').innerHTML = "id2 <em>html</em>";
+    document.getElementById('id2').innerHTML = localStorage.getItem('storage1');
 }
 
 function saveLocalStorage(item) {
