@@ -3,7 +3,8 @@ var httpRequest = new XMLHttpRequest();
 function alertContents() {
     if (httpRequest.readyState === 4) {
       if (httpRequest.status === 200) {
-        alert(httpRequest.responseText);
+        saveLocalStorage(JSON.parse(httpRequest.responseText));
+        displayLocalStorage();
       } else {
         alert('There was a problem with the request.');
       }
@@ -17,14 +18,14 @@ function getGistList() {
     }
     
     httpRequest.onreadystatechange = alertContents;
-    httpRequest.open('GET', 'https://api.github.com/gists', true);
+    httpRequest.open('GET', 'https://api.github.com/gists/public', true);
     httpRequest.send(null);
 }
 
 window.onload = function() {
     document.getElementById('id1').textContent = "id1 text";
     document.getElementById('id2').innerHTML = "id2 <em>html</em>";
-    getGistList();
+    //getGistList();
 }
 
 function displayLocalStorage() {
